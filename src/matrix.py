@@ -23,7 +23,7 @@ class Matrix():
             return
         return Matrix(a.rows, a.cols).map(lambda _, i, j: a.data[i][j] - b.data[i][j])
 
-    def map(self, func):
+    def map(self, func): 
         for row in range(self.rows):
             for col in range(self.cols):
                 tmp = self.data[row][col]

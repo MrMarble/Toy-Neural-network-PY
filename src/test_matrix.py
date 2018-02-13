@@ -2,7 +2,7 @@ import pytest
 from matrix import Matrix
 
 
-def test_add_scalar_to_matrix():
+def test_add_scalar_to_matrix(): 
     m = Matrix(3, 3)
     m.data[0] = [1, 2, 3]
     m.data[1] = [4, 5, 6]
