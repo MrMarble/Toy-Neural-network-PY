@@ -20,6 +20,13 @@ class Matrix():
         return Matrix(matrix_a.rows, matrix_a.cols).map(lambda _, i, j: matrix_a.data[i][j] - matrix_b.data[i][j])
 
     @staticmethod
+    def multiply(matrix_a, matrix_b):
+        if matrix_a.cols is not matrix_b.rows:
+            print('Columns of A must Math rows of B.')
+            return
+        return Matrix(matrix_a.rows, matrix_b.cols).map(lambda _, i, j: sum([matrix_a.data[i][k] * matrix_b.data[k][j] for k in range(matrix_a.cols)]))
+
+    @staticmethod
     def transpose(matrix):
         return Matrix(matrix.cols, matrix.rows).map(lambda _, i, j: matrix.data[j][i])
 
@@ -38,3 +45,6 @@ class Matrix():
                 tmp = self.data[row][col]
                 self.data[row][col] = func(tmp, row, col)
         return self
+
+    def to_list(self):
+        return np.array(self.data).flatten()
