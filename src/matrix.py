@@ -17,7 +17,8 @@ class Matrix():
         else:
             return self.map(lambda e, i, j: e + n)
 
-    def substract(a, b):
+    @staticmethod
+    def subtract(a, b):
         if a.rows is not b.rows or a.cols is not b.cols:
             print('Columns and Rows of A must match Columns and Rows of B.')
             return
