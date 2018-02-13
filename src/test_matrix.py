@@ -18,10 +18,11 @@ def test_add_scalar_to_matrix():
     assert m.cols == expected.cols
     assert (m.data == expected.data).all()
 
+
 def test_add_matrix_to_matrix():
     m = Matrix(2, 2)
-    m.data[0] = [1,2]
-    m.data[1] = [3,4]
+    m.data[0] = [1, 2]
+    m.data[1] = [3, 4]
     n = Matrix(2, 2)
     n.data[0] = [10, 11]
     n.data[1] = [12, 13]
@@ -35,13 +36,14 @@ def test_add_matrix_to_matrix():
     assert m.cols == expected.cols
     assert (m.data == expected.data).all()
 
+
 def test_subtract_matrix_from_matrix():
     m = Matrix(2, 2)
     m.data[0] = [10, 11]
     m.data[1] = [12, 13]
     n = Matrix(2, 2)
-    n.data[0] = [1,2]
-    n.data[1] = [3,4]
+    n.data[0] = [1, 2]
+    n.data[1] = [3, 4]
     m_minus_n = Matrix.substract(m, n)
 
     expected = Matrix(2, 2)
