@@ -1,6 +1,8 @@
-import pytest
-from matrix import Matrix
 import json
+
+import pytest
+
+from matrix import Matrix
 
 
 @pytest.fixture()
@@ -151,6 +153,7 @@ def test_print(init_matrix, capsys):
     out, err = capsys.readouterr()
     assert out == "[[1. 2. 3.]\n [4. 5. 6.]\n [7. 8. 9.]]\n"
     assert type(init_matrix.print()) is Matrix
+
 
 def test_to_list(init_matrix):
     assert (init_matrix.to_list() == [1, 2, 3, 4, 5, 6, 7, 8, 9]).all()
