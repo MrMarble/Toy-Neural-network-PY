@@ -87,7 +87,7 @@ def test_matrix_product():
     n.data[0] = [7, 8]
     n.data[1] = [9, 10]
     n.data[2] = [11, 12]
-    result = Matrix.multiply(m, n)
+    result = Matrix.static_multiply(m, n)
 
     expected = Matrix(2, 2)
     expected.data[0] = [58, 64]
@@ -95,6 +95,62 @@ def test_matrix_product():
 
     compare(result, expected)
 
+
+def test_scalar_product():
+    m = Matrix(3, 2)
+    m.data[0] = [1, 2]
+    m.data[1] = [3, 4]
+    m.data[2] = [5, 6]
+    m.multiply(7)
+    expected = Matrix(3, 2)
+    expected.data[0] = [7, 14]
+    expected.data[1] = [21, 28]
+    expected.data[2] = [35, 42]
+    compare(m, expected)
+
+
+def test_hadamard_product():
+    m = Matrix(3, 2)
+    m.data[0] = [1, 2]
+    m.data[1] = [3, 4]
+    m.data[2] = [5, 6]
+    n = Matrix(3, 2)
+    n.data[0] = [7, 8]
+    n.data[1] = [9, 10]
+    n.data[2] = [11, 12]
+    m.multiply(n)
+
+    expected = Matrix(3, 2)
+    expected.data[0] = [7, 16]
+    expected.data[1] = [27, 40]
+    expected.data[2] = [55, 72]
+
+    compare(m, expected)
+
+
+def test_static_mapping(init_matrix):
+    m = Matrix.static_map(init_matrix, lambda e, i, j: e * 10)
+    expected = Matrix(3, 3)
+    expected.data[0] = [10, 20, 30]
+    expected.data[1] = [40, 50, 60]
+    expected.data[2] = [70, 80, 90]
+    compare(m, expected)
+
+
+def test_mapping(init_matrix):
+    init_matrix.map(lambda e, i, j: e * 10)
+    expected = Matrix(3, 3)
+    expected.data[0] = [10, 20, 30]
+    expected.data[1] = [40, 50, 60]
+    expected.data[2] = [70, 80, 90]
+    compare(init_matrix, expected)
+
+
+def test_print(init_matrix, capsys):
+    init_matrix.print()
+    out, err = capsys.readouterr()
+    assert out == "[[1. 2. 3.]\n [4. 5. 6.]\n [7. 8. 9.]]\n"
+    assert type(init_matrix.print()) is Matrix
 
 def test_to_list(init_matrix):
     assert (init_matrix.to_list() == [1, 2, 3, 4, 5, 6, 7, 8, 9]).all()
