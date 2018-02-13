@@ -7,7 +7,7 @@ from nn import neural_network
 
 def main():
 
-    # Training data containing 3 of the 4 posible outputs
+    # Training data containing the 4 posible outputs
     trainig = [{
         'inputs': [0, 0],
         'output': [0]
