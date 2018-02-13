@@ -77,3 +77,24 @@ def test_transpose():
     expected.data[0] = [1, 3]
     expected.data[1] = [2, 4]
     compare(m, expected)
+
+
+def test_matrix_product():
+    m = Matrix(2, 3)
+    m.data[0] = [1, 2, 3]
+    m.data[1] = [4, 5, 6]
+    n = Matrix(3, 2)
+    n.data[0] = [7, 8]
+    n.data[1] = [9, 10]
+    n.data[2] = [11, 12]
+    result = Matrix.multiply(m, n)
+
+    expected = Matrix(2, 2)
+    expected.data[0] = [58, 64]
+    expected.data[1] = [139, 154]
+
+    compare(result, expected)
+
+
+def test_to_list(init_matrix):
+    assert (init_matrix.to_list() == [1, 2, 3, 4, 5, 6, 7, 8, 9]).all()
