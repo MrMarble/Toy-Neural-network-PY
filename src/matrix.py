@@ -8,6 +8,21 @@ class Matrix():
         self.cols = cols
         self.data = np.zeros((rows, cols))
 
+    @staticmethod
+    def from_list(arr: list):
+        return Matrix(len(arr), 1).map(lambda _, i, j: arr[i])
+
+    @staticmethod
+    def subtract(matrix_a, matrix_b):
+        if matrix_a.rows is not matrix_b.rows or matrix_a.cols is not matrix_b.cols:
+            print('Columns and Rows of A must match Columns and Rows of B.')
+            return
+        return Matrix(matrix_a.rows, matrix_a.cols).map(lambda _, i, j: matrix_a.data[i][j] - matrix_b.data[i][j])
+
+    @staticmethod
+    def transpose(matrix):
+        return Matrix(matrix.cols, matrix.rows).map(lambda _, i, j: matrix.data[j][i])
+
     def add(self, n: int):
         if type(n) is Matrix:
             if self.rows is not n.rows or self.cols is not n.cols:
@@ -16,13 +31,6 @@ class Matrix():
             return self.map(lambda e, i, j: e+n.data[i][j])
         else:
             return self.map(lambda e, i, j: e + n)
-
-    @staticmethod
-    def subtract(a, b):
-        if a.rows is not b.rows or a.cols is not b.cols:
-            print('Columns and Rows of A must match Columns and Rows of B.')
-            return
-        return Matrix(a.rows, a.cols).map(lambda _, i, j: a.data[i][j] - b.data[i][j])
 
     def map(self, func):
         for row in range(self.rows):
