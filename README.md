@@ -8,10 +8,11 @@ Neural Network library copy of [Toy-Neural-Network-JS](https://github.com/Coding
 ## Getting Started
   ### Prerequisites
   You need to have the following installed:
-    * Python (>=3.6.x)
-    * venv Python module
-    * Third party modules:
-      * NumPy
+  * Python (>=3.6.x)
+  * venv Python module
+  * Third party modules:
+    * NumPy
+    * Pytest (for running the tests)
   ### Installing
   1. Clone the repository
   `git clone https://github.com/MrMarble/Toy-Neural-network-PY.git`
@@ -22,7 +23,7 @@ Neural Network library copy of [Toy-Neural-Network-JS](https://github.com/Coding
   
   3. Activate the virtual enviroment
       * Linux
-      `soruce bin/activate`
+      `source bin/activate`
       
       * Windows (PowerShell)
       `.\Scripts\activate`
