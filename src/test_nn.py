@@ -25,3 +25,12 @@ def test_predict_pretrained():
     assert predict[0] == pytest.approx(0.97840756)
     assert type(predict) is numpy.ndarray
     assert type(predict[0]) is numpy.float64
+
+
+def test_train():
+    # Tests the train method by using a very simple dataset
+    a = neural_network(1, 8, 1)
+    a.set_learning_rate(10)
+    for x in range(3):
+        a.train([x], [1])
+    assert a.predict([1])[0] > 0.9
