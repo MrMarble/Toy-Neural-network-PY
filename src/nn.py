@@ -1,9 +1,11 @@
 
 from matrix import Matrix
 from activation import activation_function
+import dill
+
 
 class neural_network():
-    def __init__(self, input_nodes, hidden_nodes, output_nodes):
+    def __init__(self, input_nodes: int, hidden_nodes: int, output_nodes: int):
         self.input_nodes = input_nodes
         self.hidden_nodes = hidden_nodes
         self.output_nodes = output_nodes
@@ -21,7 +23,7 @@ class neural_network():
 
         self.set_activation_function()
 
-    def predict(self, input_list):
+    def predict(self, input_list: list) -> list:
         # Generating the Hidden Outputs
         inputs = Matrix.from_list(input_list)
         hidden = Matrix.static_multiply(self.weights_ih, inputs)
@@ -41,10 +43,10 @@ class neural_network():
     def set_learning_rate(self, learning_rate: float = 0.1):
         self.learning_rate = learning_rate
 
-    def set_activation_function(self, func=activation_function.sigmoid()):
+    def set_activation_function(self, func: activation_function = activation_function.sigmoid()):
         self.activation_function = func
 
-    def train(self, input_list, target_list):
+    def train(self, input_list: list, target_list: list):
         # Generating the Hidden Outputs
         inputs = Matrix.from_list(input_list)
         hidden = Matrix.static_multiply(self.weights_ih, inputs)
@@ -94,3 +96,10 @@ class neural_network():
         self.weights_ih.add(weight_ih_deltas)
         # Adjust the bias by its deltas(which is just the gradients)
         self.bias_h.add(hidden_gradient)
+
+    def serialize(self) -> bytes:
+        return dill.dumps(self)
+
+    @staticmethod
+    def deserialize(data: bytes) -> 'neural_network':
+        return dill.loads(data)
