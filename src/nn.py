@@ -75,11 +75,6 @@ class neural_network():
         hidden_T = Matrix.transpose(hidden)
         weight_ho_deltas = Matrix.static_multiply(gradients, hidden_T)
 
-        # Adjust the weights by deltas
-        self.weights_ho.add(weight_ho_deltas)
-        # Adjust the bias by its deltas(which is just the gradients)
-        self.bias_o.add(gradients)
-
         # Calculate the hidden layer errors
         who_t = Matrix.transpose(self.weights_ho)
         hidden_errors = Matrix.static_multiply(who_t, output_errors)
@@ -96,6 +91,11 @@ class neural_network():
         self.weights_ih.add(weight_ih_deltas)
         # Adjust the bias by its deltas(which is just the gradients)
         self.bias_h.add(hidden_gradient)
+
+        # Adjust the weights by deltas
+        self.weights_ho.add(weight_ho_deltas)
+        # Adjust the bias by its deltas(which is just the gradients)
+        self.bias_o.add(gradients)
 
     def serialize(self) -> bytes:
         return dill.dumps(self)
