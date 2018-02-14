@@ -1,4 +1,6 @@
-# Toy-Neural-Network-PY ![Build Status](https://circleci.com/gh/MrMarble/Toy-Neural-network-PY.svg?&style=shield&circle-token=:circle-token)
+# Toy-Neural-Network-PY ![Build Status](https://circleci.com/gh/MrMarble/Toy-Neural-network-PY.svg?&style=shield&circle-token=:circle-token) [![codecov](https://codecov.io/gh/MrMarble/Toy-Neural-network-PY/branch/master/graph/badge.svg)](https://codecov.io/gh/MrMarble/Toy-Neural-network-PY)
+
+
 
 Neural Network library copy of [Toy-Neural-Network-JS](https://github.com/CodingTrain/Toy-Neural-Network-JS) rewriten in Python
 ## Author
