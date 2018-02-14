@@ -43,7 +43,7 @@ def main():
         prediction = nn.predict(test)[0]
         # Print the results
         print('XOR:', test, 'PREDICTION:', round(
-            prediction), 'PRECISION', round(prediction, 3))
+            prediction), 'PRECISION', round(prediction, 4))
 
 
 if __name__ == '__main__':
